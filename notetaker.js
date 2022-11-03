@@ -7,6 +7,11 @@
  */
 let notes = [];
 
+updatePageContent();
+
+document.getElementById('add').addEventListener('click', addNotes);
+document.getElementById('remove').addEventListener('click', deleteNotes);
+
 /**
  * Updates the displayed notes and updates the options of the drop-down box
  * to reflect the content of the notes array. 
@@ -42,14 +47,25 @@ function updateDropBox() {
     for (let index = 0; index < notes.length; index++) {
         selection.innerHTML += "<option value=\"" + index + "\">" + notes[index] + "</option>";
     }
-
+    document.getElementById('delete-note').classList.remove('display-none');
 }
 
+/**
+ * Adds the value of the text input element as element to notes array
+ */
 function addNotes() {
-
+    let newNote = document.getElementById("newnote").value;
+    notes.push(newNote);
+    document.getElementById("newnote").value = "";
+    updatePageContent();
 }
 
+/**
+ * Deletes one element of notes array at the index specified by the drop box value
+ */
 function deleteNotes() {
-
+    let removeNote = document.getElementById("noteselection").value;
+    notes.splice(removeNote, 1);
+    updatePageContent();
 }
 
