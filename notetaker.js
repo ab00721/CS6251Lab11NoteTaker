@@ -61,11 +61,29 @@ function addNotes() {
 }
 
 /**
+ * Adds the value of the text input element as element to notes array
+ * and validates that note is not an empty string
+ */
+ function addNotes() {
+    let newNote = document.getElementById("newnote").value;
+    if (newNote.length == 0) {
+        document.getElementById('error').classList.remove('display-none');
+    } else {
+        notes.push(newNote);
+        document.getElementById("newnote").value = "";
+        document.getElementById('error').classList.add('display-none');
+    }
+    updatePageContent();
+}
+
+/**
  * Deletes one element of notes array at the index specified by the drop box value
+ * and hides error message if it is not already hidden. 
  */
 function deleteNotes() {
     let removeIndex = document.getElementById("noteselection").value;
     notes.splice(removeIndex, 1);
+    document.getElementById('error').classList.add('display-none');
     updatePageContent();
 }
 

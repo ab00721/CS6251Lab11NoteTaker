@@ -33,3 +33,6 @@ button {
 div {
     margin-bottom: 2em;
 }
+#error {
+    color: red;
+}
