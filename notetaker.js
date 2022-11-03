@@ -10,7 +10,7 @@ let notes = [];
 updatePageContent();
 
 document.getElementById('add').addEventListener('click', addNotes);
-document.getElementById('remove').addEventListener('click', deleteNotes);
+document.getElementById('delete').addEventListener('click', deleteNotes);
 
 /**
  * Updates the displayed notes and updates the options of the drop-down box
@@ -33,7 +33,7 @@ function updateNoteList() {
     let noteList = document.getElementById('notelist');
     noteList.innerHTML = "";
     for (let index = 0; index < notes.length; index++) {
-        notes.innerHTML += "<li>" + notes[index] + "</li>"
+        noteList.innerHTML += "<li>" + notes[index] + "</li>"
     }
     document.getElementById('display-notes').classList.remove('display-none');
 }
@@ -64,8 +64,8 @@ function addNotes() {
  * Deletes one element of notes array at the index specified by the drop box value
  */
 function deleteNotes() {
-    let removeNote = document.getElementById("noteselection").value;
-    notes.splice(removeNote, 1);
+    let removeIndex = document.getElementById("noteselection").value;
+    notes.splice(removeIndex, 1);
     updatePageContent();
 }
 
